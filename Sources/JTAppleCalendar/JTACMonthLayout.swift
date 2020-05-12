@@ -316,11 +316,11 @@ class JTACMonthLayout: UICollectionViewLayout, JTACMonthLayoutProtocol {
         let attrib = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: item, section: section))
         
         attrib.frame = CGRect(x: cachedValue.xOffset, y: cachedValue.yOffset, width: cachedValue.width, height: cachedValue.height)
-        if minimumInteritemSpacing > -1, minimumLineSpacing > -1 {
-            var frame = attrib.frame.insetBy(dx: minimumInteritemSpacing, dy: minimumLineSpacing)
-            if frame == .null { frame = attrib.frame.insetBy(dx: 0, dy: 0) }
-            attrib.frame = frame
-        }
+//        if minimumInteritemSpacing > -1, minimumLineSpacing > -1 {
+//            var frame = attrib.frame.insetBy(dx: minimumInteritemSpacing, dy: minimumLineSpacing)
+//            if frame == .null { frame = attrib.frame.insetBy(dx: 0, dy: 0) }
+//            attrib.frame = frame
+//        }
         return attrib
     }
     
@@ -438,7 +438,7 @@ class JTACMonthLayout: UICollectionViewLayout, JTACMonthLayoutProtocol {
         var size: (width: CGFloat, height: CGFloat) = (width, cellSize.height)
         if shouldUseUserItemSizeInsteadOfDefault {
             if scrollDirection == .vertical {
-                size.height = cellSize.height
+                size.height = cellSize.height + minimumLineSpacing
             } else {
                 size.width = cellSize.width
                 let headerHeight =  strictBoundaryRulesShouldApply ? cachedHeaderHeightForSection(section) : 0
